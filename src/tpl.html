@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>Amelia's Learn &amp; Discover</title>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#7c3aed">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Discover"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="icons/icon-180.png"><link rel="icon" href="icons/icon-192.png">
+<style>
+:root{--p:#7c3aed;--p2:#a78bfa;--t:#0d9488;--c:#f43f5e;--g:#f59e0b;--bg:#faf5ff;--ink:#2e1065;--card:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font-family:"Avenir Next","Segoe UI",system-ui,sans-serif;color:var(--ink);background:linear-gradient(160deg,#f5f3ff,#fdf2f8 55%,#ecfeff);min-height:100vh}
+button{font:inherit;cursor:pointer;border:0}
+header{display:flex;align-items:center;gap:12px;padding:14px 20px;background:linear-gradient(90deg,#6d28d9,#9333ea 60%,#db2777);color:#fff;box-shadow:0 4px 18px #6d28d933}
+header img{width:46px;height:46px;border-radius:12px}
+header h1{font-size:22px;margin:0;flex:1}header h1 small{display:block;font-size:13px;font-weight:500;opacity:.85}
+.pill{background:#ffffff26;border-radius:99px;padding:7px 13px;font-weight:700;font-size:15px}
+.hbtn{background:#ffffff26;color:#fff;border-radius:12px;padding:8px 12px;font-size:20px}
+main{max-width:1100px;margin:0 auto;padding:18px}
+.tabs{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.tab{background:#fff;color:var(--p);padding:10px 18px;border-radius:99px;font-weight:700;box-shadow:0 2px 8px #7c3aed1a}
+.tab.on{background:var(--p);color:#fff}
+.today{display:flex;align-items:center;gap:14px;background:#fff;border-radius:18px;padding:14px 18px;margin-bottom:16px;box-shadow:0 3px 14px #7c3aed14}
+.stars3 span{font-size:28px;filter:grayscale(1);opacity:.35}.stars3 span.on{filter:none;opacity:1}
+.path{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.lvl{background:#fff;border-radius:18px;padding:14px;text-align:left;box-shadow:0 3px 12px #7c3aed14;position:relative;min-height:128px;display:flex;flex-direction:column;gap:6px;color:var(--ink)}
+.lvl .n{font-size:12px;font-weight:800;color:var(--p2);letter-spacing:.06em}.lvl .e{font-size:30px}.lvl b{font-size:15px}
+.lvl.locked{opacity:.45}.lvl.done{background:linear-gradient(150deg,#ecfdf5,#fff)}.lvl.cur{outline:3px solid var(--g);animation:pulse 2s infinite}
+.lvl .st{position:absolute;top:10px;right:12px;font-size:14px}
+@keyframes pulse{50%{box-shadow:0 0 0 8px #f59e0b33}}
+.cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.cat{background:#fff;border-radius:99px;padding:8px 14px;font-weight:700;color:var(--ink)}.cat.on{background:var(--t);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.vid{background:#fff;border-radius:16px;overflow:hidden;text-align:left;box-shadow:0 3px 12px #7c3aed14;padding:0;color:var(--ink)}
+.vid img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}.vid div{padding:9px 11px;font-size:14px;font-weight:600;line-height:1.25}
+.vid small{display:block;color:#7c6aa8;font-weight:500;margin-top:4px}
+.ov{position:fixed;inset:0;background:#1e1036e6;display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
+.ov.on{display:flex}
+.box{background:#fff;border-radius:24px;padding:24px;max-width:720px;width:100%;max-height:94vh;overflow:auto;position:relative}
+.big{font-size:22px;line-height:1.4}
+.btn{background:var(--p);color:#fff;padding:13px 22px;border-radius:14px;font-weight:800;font-size:17px}
+.btn.alt{background:#ede9fe;color:var(--p)}.btn.t{background:var(--t)}.btn.c{background:var(--c)}
+.pw{position:relative;width:min(1000px,96vw);aspect-ratio:16/9;background:#000;border-radius:16px;overflow:hidden}
+.pw iframe,#yt{position:absolute;inset:0;width:100%;height:100%;border:0}
+.blk{position:absolute;z-index:3;background:transparent}
+.blk.top{top:0;left:0;right:0;height:22%}.blk.br{right:0;bottom:0;width:22%;height:16%}.blk.bl{left:0;bottom:0;width:18%;height:16%}
+.endc{position:absolute;inset:0;z-index:5;background:linear-gradient(150deg,#6d28d9,#db2777);color:#fff;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;font-size:26px;font-weight:800;text-align:center}
+.pctl{display:flex;gap:10px;justify-content:center;margin-top:12px}
+.qprog{height:10px;background:#ede9fe;border-radius:9px;overflow:hidden;margin:6px 0 14px}.qprog i{display:block;height:100%;background:linear-gradient(90deg,var(--t),var(--p))}
+.qpic{font-size:44px;text-align:center;margin:6px 0}
+.ans{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.ans button{background:#f5f3ff;border:2px solid #ddd6fe;border-radius:14px;padding:14px;font-size:19px;font-weight:700;color:var(--ink);min-height:62px}
+.ans button.ok{background:#d1fae5;border-color:#10b981}.ans button.no{background:#ffe4e6;border-color:#f43f5e;opacity:.6}
+.close{position:absolute;top:12px;right:14px;background:#f3f4f6;border-radius:50%;width:38px;height:38px;font-size:20px}
+.msg{text-align:center}.msg .heart{font-size:56px}.msg p{font-size:24px;line-height:1.45;margin:10px 0 6px}.msg .sig{font-family:"Snell Roundhand","Brush Script MT",cursive;font-size:30px;color:var(--c)}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:6px;border-bottom:1px solid #eee;text-align:left}
+.kp{display:grid;grid-template-columns:repeat(3,70px);gap:10px;justify-content:center;margin-top:14px}.kp button{height:60px;border-radius:14px;background:#ede9fe;font-size:24px;font-weight:800;color:var(--ink)}
+.dots{font-size:30px;letter-spacing:10px;text-align:center}
+.bars{display:flex;align-items:flex-end;gap:8px;height:120px;padding:8px 0}.bars div{flex:1;text-align:center;font-size:11px}.bars i{display:block;background:linear-gradient(var(--p2),var(--p));border-radius:6px 6px 0 0;margin-bottom:4px}
+.sec{background:#faf5ff;border-radius:14px;padding:12px 14px;margin:12px 0}
+.sec h3{margin:0 0 8px}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+input,textarea,select{font:inherit;padding:8px;border-radius:10px;border:1px solid #ccc}
+.conf{position:fixed;inset:0;pointer-events:none;z-index:99}
+.sw{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:99px;padding:6px 12px;font-weight:700;font-size:14px}
+</style></head><body>
+<header><img src="icons/icon-192.png" alt=""><h1>Amelia's Learn &amp; Discover<small id="greet"></small></h1>
+<span class="pill" id="starsTot">⭐ 0</span><button class="hbtn" id="ttsBtn" title="Read aloud">🔊</button><button class="hbtn" id="parentBtn" title="Parents">🔒</button></header>
+<main>
+<div class="today"><div style="font-size:34px">🌟</div><div style="flex:1"><b id="todayTxt">Today's lessons</b><div style="font-size:14px;color:#6b5b95" id="todaySub"></div></div><div class="stars3" id="stars3"></div></div>
+<div class="tabs"><button class="tab on" data-t="path">🗺️ Learning Path</button><button class="tab" data-t="free">🎬 Free Explore</button><button class="tab" data-t="msg">💌 Message from Mom</button></div>
+<section id="pathV"><div class="path" id="path"></div></section>
+<section id="freeV" hidden><div class="cats" id="cats"></div><div class="grid" id="grid"></div></section>
+</main>
+<div class="ov" id="msgOv"><div class="box msg"><div class="heart">💜</div><div style="font-weight:800;color:var(--p)">Good to see you, Amelia!</div><p id="msgTxt"></p><div class="sig" id="msgSig"></div><br><button class="btn" id="msgGo">Let's learn! ✨</button></div></div>
+<div class="ov" id="playOv"><div><div class="pw"><div id="yt"></div><div class="blk top"></div><div class="blk br"></div><div class="blk bl"></div><div class="endc" id="endc"><div>🎉 Video finished!</div><button class="btn t" id="toQuiz">Take the 10-question quiz ➜</button></div></div>
+<div class="pctl"><button class="btn alt" id="pp">⏯ Play / Pause</button><button class="btn t" id="skipQ">Quiz now ➜</button><button class="btn c" id="closeP">✕ Close</button></div></div></div>
+<div class="ov" id="quizOv"><div class="box" id="quizBox"></div></div>
+<div class="ov" id="pinOv" style="z-index:70"><div class="box" style="max-width:360px;text-align:center"><button class="close" id="pinX">✕</button><h2>Grown-ups only</h2><div id="pinQ" style="font-size:15px;color:#666">Enter the parent PIN</div><div class="dots" id="pinD">○○○○</div><div class="kp" id="kp"></div></div></div>
+<div class="ov" id="parOv"><div class="box" id="parBox" style="max-width:900px"></div></div>
+<div class="ov" id="lockOv"><div class="box msg"><div class="heart">🌙</div><p>All done for today, Amelia!</p><div style="font-size:18px;color:#6b5b95">You worked so hard. Come back tomorrow for more discoveries.</div><br><button class="btn alt" id="lockPar">Grown-ups 🔒</button></div></div>
+<canvas class="conf" id="conf"></canvas>
+<script>
+const VIDS=__VIDS__;
+const MSGS=__MSGS__;
+const K='amelia_ld_v1_';
+const S={get(k,d){try{const v=localStorage.getItem(K+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){localStorage.setItem(K+k,JSON.stringify(v))}};
+const $=s=>document.querySelector(s);
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const CATS={math:['Math','🔢'],reading:['Reading & Writing','📚'],science:['Science','🔬'],geography:['Geography & History','🌍'],bible:['Bible Stories','✝️'],art:['Art & Music','🎨']};
+const R=n=>Math.floor(Math.random()*n),pick=a=>a[R(a.length)],shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=R(i+1);[a[i],a[j]]=[a[j],a[i]]}return a};
+// ---------- settings ----------
+const set=Object.assign({pin:'1234',maxLessons:3,maxMin:180,sig:'Love, Mom',custom:[],tts:true},S.get('settings',{}));
+function saveSet(){S.set('settings',set)}
+// ---------- speech ----------
+let voice=null;function pickVoice(){const vs=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));voice=vs.find(v=>/Samantha|Ava|Allison|Google US English|Female/i.test(v.name))||vs[0]||null}
+if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function say(t){if(!set.tts||!('speechSynthesis' in window))return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/[^\w\s.,!?'’:;$%+\-×÷=\/]/g,' '));if(voice)u.voice=voice;u.rate=.97;u.pitch=1.05;speechSynthesis.speak(u)}catch(e){}}
+function ttsIcon(){$('#ttsBtn').textContent=set.tts?'🔊':'🔇'}
+$('#ttsBtn').onclick=()=>{set.tts=!set.tts;saveSet();ttsIcon();if(!set.tts)speechSynthesis.cancel()};
+// ---------- day / time tracking ----------
+function day(){const d=S.get('day',{});if(d.date!==today()){const n={date:today(),lessons:[],sec:0,unlocked:false};S.set('day',n);return n}return d}
+function saveDay(d){S.set('day',d)}
+function locked(){const d=day();if(d.unlocked)return false;return d.lessons.length>=set.maxLessons||d.sec>=set.maxMin*60}
+let lastTick=Date.now();setInterval(()=>{const now=Date.now();if(document.visibilityState==='visible'){const d=day();d.sec+=Math.min(60,(now-lastTick)/1000);saveDay(d);const m=S.get('mins',{});m[today()]=Math.round(d.sec/60);S.set('mins',m);if(locked()&&!$('#lockOv').classList.contains('on'))doLock('time')}lastTick=now},15000);
+function doLock(why){closeAll();$('#lockOv').classList.add('on');say('All done for today, Amelia! You worked so hard. Come back tomorrow for more discoveries.');const l=S.get('locklog',[]);if(!l.length||l[l.length-1].date!==today()){l.push({date:today(),why,at:new Date().toLocaleTimeString()});S.set('locklog',l)}}
+function closeAll(){document.querySelectorAll('.ov').forEach(o=>o.classList.remove('on'));stopVid()}
+// ---------- learning path ----------
+const ORDER=['math','reading','science','geography','math','bible','science','reading','geography','art'];
+const byCat={};VIDS.forEach(v=>(byCat[v.cat]=byCat[v.cat]||[]).push(v));
+const TITLES={math:['Number Explorer','Fraction Fun','Money Math','Shape Detective','Times Tables','Measure It!','Logic Lab'],reading:['Story Detective','Word Wizard','Poetry Corner','Grammar Garden','Book Explorer'],science:['Volcano Lab','Space Voyage','Body Science','Animal Kingdom','Earth & Sky','Inventor Lab'],geography:['World Traveler','State Quest','History Hunt','Map Master'],bible:['Bible Adventure','Faith Heroes'],art:['Art Studio']};
+const LV=[];{const ptr={};for(let i=0;i<36;i++){const c1=ORDER[i%ORDER.length],c2=ORDER[(i+3)%ORDER.length];const vs=[];for(const c of[c1,c2]){const L=byCat[c]||byCat.science;ptr[c]=ptr[c]||0;vs.push(L[ptr[c]++%L.length])}LV.push({n:i+1,cat:c1,title:TITLES[c1][Math.floor(i/ORDER.length)%TITLES[c1].length],vids:vs.map(v=>v.id),tier:Math.min(3,1+Math.floor(i/12))})}}
+const prog=()=>S.get('prog',{done:[],vdone:{}});
+function renderPath(){const p=prog(),cur=p.done.length;$('#path').innerHTML=LV.map((l,i)=>{const st=p.done.includes(l.n)?'done':i===cur?'cur':i>cur?'locked':'';const c=CATS[l.cat];return `<button class="lvl ${st}" data-l="${i}"><span class="n">LEVEL ${l.n} · ${'★'.repeat(l.tier)}</span><span class="st">${st==='done'?'✅':st==='locked'?'🔒':''}</span><span class="e">${c[1]}</span><b>${l.title}</b><span style="font-size:12px;color:#7c6aa8">${c[0]} · 2 videos + quizzes</span></button>`}).join('');
+ document.querySelectorAll('.lvl').forEach(b=>b.onclick=()=>{const i=+b.dataset.l;if(i>prog().done.length){say('Finish the levels before this one to unlock it!');return}openLevel(i)});renderTop()}
+function renderTop(){const d=day(),n=d.lessons.length;$('#stars3').innerHTML=[0,1,2].map(i=>`<span class="${i<n?'on':''}">⭐</span>`).join('');$('#todayTxt').textContent=`Today: ${Math.min(n,set.maxLessons)} of ${set.maxLessons} new lessons`;const left=Math.max(0,set.maxMin-Math.round(d.sec/60));$('#todaySub').textContent=`${left} minutes of learning time left today · replaying finished levels doesn't count`;$('#starsTot').textContent='⭐ '+S.get('stars',0);const h=new Date().getHours();$('#greet').textContent=(h<12?'Good morning':h<17?'Good afternoon':'Good evening')+', Amelia!'}
+let ctx=null;
+function openLevel(i){if(locked())return doLock('lessons');const l=LV[i],p=prog(),vd=p.vdone[l.n]||[];const next=l.vids.find(v=>!vd.includes(v))||l.vids[0];ctx={level:i};playVid(next)}
+// ---------- free play ----------
+let fcat='all';function renderFree(){$('#cats').innerHTML=[['all',['All','✨']],...Object.entries(CATS)].map(([k,c])=>`<button class="cat ${fcat===k?'on':''}" data-c="${k}">${c[1]} ${c[0]}</button>`).join('');document.querySelectorAll('.cat').forEach(b=>b.onclick=()=>{fcat=b.dataset.c;renderFree()});
+ const list=VIDS.filter(v=>fcat==='all'||v.cat===fcat).concat(set.extra||[]).filter(v=>!(set.hidden||[]).includes(v.id)&&(fcat==='all'||v.cat===fcat));
+ $('#grid').innerHTML=list.map(v=>`<button class="vid" data-v="${v.id}"><img loading="lazy" src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt=""><div>${esc(clean(v.t))}<small>${CATS[v.cat][1]} ${esc(v.ch)}</small></div></button>`).join('');document.querySelectorAll('.vid').forEach(b=>b.onclick=()=>{if(locked())return doLock('lessons');ctx=null;playVid(b.dataset.v)})}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const clean=t=>t.split('|')[0].replace(/ - (Math Antics|FreeSchool).*$/,'').replace(/:\s*Crash Course Kids.*$/,'').replace(/\s*-\s*$/,'').trim();
+// ---------- player ----------
+let player=null,curVid=null,apiReady=false;window.onYouTubeIframeAPIReady=()=>{apiReady=true};
+(function(){const s=document.createElement('script');s.src='https://www.youtube.com/iframe_api';s.onerror=()=>{};document.head.appendChild(s)})();
+function playVid(id){curVid=id;$('#playOv').classList.add('on');$('#endc').style.display='none';const v=VIDS.find(x=>x.id===id)||{};S.set('lastv',id);
+ if(apiReady&&window.YT&&YT.Player){if(player){player.loadVideoById(id)}else{player=new YT.Player('yt',{host:'https://www.youtube-nocookie.com',videoId:id,playerVars:{rel:0,modestbranding:1,playsinline:1,iv_load_policy:3,fs:0,disablekb:1,autoplay:1},events:{onStateChange:e=>{if(e.data===0)ended()}}})}}
+ else{$('#yt').outerHTML=`<iframe id="yt" allow="autoplay; encrypted-media" src="https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&fs=0&autoplay=1"></iframe>`}}
+function ended(){$('#endc').style.display='flex';say('Great watching, Amelia! Ready for your quiz?')}
+function stopVid(){try{player&&player.stopVideo&&player.stopVideo()}catch(e){}if(!player){const f=$('#yt');if(f&&f.tagName==='IFRAME')f.src='about:blank'}}
+$('#pp').onclick=()=>{try{const s=player.getPlayerState();s===1?player.pauseVideo():player.playVideo()}catch(e){}};
+$('#closeP').onclick=()=>{stopVid();$('#playOv').classList.remove('on');renderAll()};
+$('#toQuiz').onclick=$('#skipQ').onclick=()=>{stopVid();$('#playOv').classList.remove('on');startQuiz(curVid)};
+// ---------- question banks ----------
+const BANK={
+volcano:[['What comes out of an erupting volcano?','🌋',['Lava','Snow','Sand only','Chocolate']],['Melted rock under the ground is called…','🔥',['Magma','Marble','Mud','Mist']],['Which U.S. state has many volcanoes?','🏝️',['Hawaii','Kansas','Ohio','Iowa']],['The biggest known volcano, Olympus Mons, is on…','🔴',['Mars','The Moon','Earth','The Sun']],['When lava cools, it turns into…','🪨',['Rock','Water','Gas','Ice']]],
+space:[['Which planet do we live on?','🌎',['Earth','Mars','Venus','Jupiter']],['What is the largest planet?','🪐',['Jupiter','Mercury','Earth','Mars']],['The Sun is a…','☀️',['Star','Planet','Moon','Comet']],['How many planets are in our solar system?','🔭',['8','5','12','3']],['What pulls things toward Earth?','🍎',['Gravity','Wind','Magnets','Light']],['Which planet is famous for its rings?','🪐',['Saturn','Mars','Earth','Mercury']],['The Moon goes around…','🌙',['Earth','The Sun only','Mars','Saturn']]],
+gravity:[['What force makes a ball fall down?','⚽',['Gravity','Friction','Wind','Sound']],['On the Moon you would feel…','🌙',['Lighter','Heavier','The same','Upside down']],['If you drop a feather and a rock on the Moon (no air), they land…','🪶',['At the same time','Feather first','Never','Rock floats']]],
+matter:[['Ice, water and steam are the same stuff in different…','🧊',['States','Colors','Planets','Sizes']],['Which is a gas?','💨',['Steam','Ice','A rock','A spoon']],['Matter is anything that…','📦',['Takes up space','Is invisible','Is alive','Makes noise']],['Water freezing into ice is a change from liquid to…','❄️',['Solid','Gas','Plasma','Light']]],
+engineering:[['An engineer is someone who…','🛠️',['Designs and builds solutions','Only paints','Only sings','Sleeps all day']],['The first step to solving a problem is to…','🤔',['Understand the problem','Give up','Guess randomly','Hide']],['When a design doesn\'t work, engineers…','🔁',['Test and improve it','Throw it away forever','Get angry','Stop trying']],['A computer needs ___ to tell it what to do.','💻',['Instructions (code)','Water','Paint','Seeds']]],
+body:[['How many senses do we usually talk about?','🖐️',['5','2','10','3']],['We hear with our…','👂',['Ears','Elbows','Knees','Hair']],['Which organ pumps blood?','❤️',['Heart','Lungs','Stomach','Brain']],['Your brain is inside your…','🧠',['Skull','Foot','Hand','Stomach']],['We taste with our…','👅',['Tongue','Nose','Eyes','Fingers']],['Balance is helped by the inner part of your…','⚖️',['Ear','Toe','Teeth','Nails']],['A doctor listens to your heart with a…','🩺',['Stethoscope','Telescope','Microscope','Spoon']]],
+animals:[['A plant-eating animal is called an…','🥕',['Herbivore','Carnivore','Engineer','Omnivore']],['In a food chain, energy starts with the…','☀️',['Sun','Lion','Rock','Moon']],['Polar bears live in the…','🐻‍❄️',['Arctic','Desert','Rainforest','City park']],['Penguins are birds that…','🐧',['Swim but cannot fly','Fly very high','Live in trees','Eat grass']],['Reindeer are also called…','🦌',['Caribou','Moose','Antelope','Zebra']],['Living things need…','🌱',['Food, water and air','Only toys','Only sunlight','Nothing']],['Scorpions are related to…','🦂',['Spiders','Fish','Birds','Frogs']],['Meerkats live in groups called…','🐾',['Mobs','Herds of cows','Schools','Packs of gum']],['An octopus has how many arms?','🐙',['8','4','6','10']]],
+earth:[['In fall, many leaves change color because…','🍂',['Trees stop making green chlorophyll','They get painted','It snows','The sun gets closer']],['An acorn grows into an…','🌰',['Oak tree','Pine tree','Apple','Cactus']],['Pine cones hold the tree\'s…','🌲',['Seeds','Water','Leaves','Bark']],['Snowflakes form from frozen…','❄️',['Water vapor','Sand','Milk','Salt']],['Cactus plants store water in their…','🌵',['Stems','Spines only','Flowers','Roots only']],['Which season comes after summer?','🍁',['Fall','Spring','Winter','Summer again']]],
+states:[['How many states are in the U.S.?','🇺🇸',['50','13','48','100']],['The Grand Canyon was carved mostly by a…','🏜️',['River','Glacier on the Moon','Giant','Volcano']],['Yellowstone was the world\'s first…','🏞️',['National park','Shopping mall','City','Airport']],['Which state is made of islands in the Pacific?','🌺',['Hawaii','Texas','Maine','Utah']],['The largest U.S. state is…','🗺️',['Alaska','Rhode Island','Ohio','Florida']],['The Grand Canyon is in…','🏜️',['Arizona','Florida','New York','Maine']]],
+world:[['How many continents are there?','🌍',['7','5','3','10']],['Iceland has both ice and…','🔥',['Volcanoes','Deserts of sand only','Jungles','Penguins']],['New Zealand is near which continent?','🦘',['Australia','Europe','Africa','Antarctica']],['The largest ocean is the…','🌊',['Pacific','Atlantic','Indian','Arctic']],['Which continent is the coldest?','🧊',['Antarctica','Africa','Asia','South America']],['A map key helps you…','🗺️',['Understand map symbols','Unlock a door','Count money','Bake']]],
+history:[['The Pilgrims sailed to America on the…','⛵',['Mayflower','Titanic','Santa Maria','Space Shuttle']],['The Rosetta Stone helped people read…','📜',['Egyptian hieroglyphs','Emails','Music notes','Maps']],['The Louisiana Purchase made the U.S…','📈',['Much bigger','Much smaller','An island','Disappear']],['The U.S. Constitution is a…','📜',['Plan for the government','Recipe','Song','Map']],['Who invented the light bulb that became popular?','💡',['Thomas Edison','George Washington','Noah','Abraham Lincoln']],['The Wright brothers built the first successful…','✈️',['Airplane','Car','Telephone','Bicycle']],['Alexander Graham Bell is known for the…','☎️',['Telephone','Television','Rocket','Pizza']]],
+lit:[['An inference is…','🔎',['A smart guess using clues','A spelling word','A type of poem','A drawing']],['A character trait describes…','🧑',['What a character is like','The page number','The book cover','The author\'s age']],['The theme of a story is its…','💡',['Big lesson or message','Title','First word','Font']],['Nonfiction books are…','📗',['True and factual','Made-up fairy tales','Always poems','Empty']],['To compare and contrast means to find…','⚖️',['Ways things are alike and different','Only colors','Rhymes','Page numbers']],['In "Charlotte\'s Web," Charlotte is a…','🕷️',['Spider','Pig','Horse','Cat']],['The person who writes a book is the…','✍️',['Author','Illustrator','Reader','Librarian']],['The setting of a story is…','🏡',['Where and when it happens','The ending','The main character','The cover']]],
+poetry:[['Words that sound the same at the end are called…','🎵',['Rhymes','Nouns','Fractions','Verbs']],['A group of lines in a poem is a…','📝',['Stanza','Chapter','Paragraph only','Sentence']],['Which word rhymes with "light"?','🌟',['Bright','Lamp','Late','Lit']]],
+phonics:[['Which word has a long A sound?','🔤',['Cake','Cat','Cap','Can']],['Which letters make the "sh" sound in "ship"?','🚢',['s + h','c + h','t + h','w + h']],['What is the vowel team in "boat"?','⛵',['oa','bo','at','ba']],['How many syllables are in "butterfly"?','🦋',['3','1','2','5']],['Which word starts with a blend?','🌸',['Flower','Dog','Mom','Sun']]],
+grammar:[['A noun is a…','🏷️',['Person, place or thing','Action word','Describing word','Number']],['Which word is a verb?','🏃‍♀️',['Run','Happy','Table','Blue']],['Which word is an adjective?','🌈',['Colorful','Jump','Pencil','Quickly run']],['Every sentence should start with a…','🔠',['Capital letter','Period','Number','Comma']],['Which is the correct sentence?','✅',['She runs fast.','she run fast','She runned fast.','Runs fast she.']],['The plural of "child" is…','👧',['Children','Childs','Childes','Child']]],
+creation:[['In the beginning, God created the heavens and the…','🌍',['Earth','Moon only','Stars only','Oceans only']],['On the seventh day of creation, God…','😌',['Rested','Made fish','Made light','Made people']],['The first man in the Bible was…','🌳',['Adam','Noah','Moses','David']],['The garden where Adam and Eve lived was…','🍎',['Eden','Gethsemane','Babylon','Egypt']]],
+daniel:[['Daniel was thrown into a den of…','🦁',['Lions','Bears','Snakes','Wolves']],['Who kept Daniel safe?','🙏',['God','The king\'s guards','A wizard','Nobody']],['Daniel kept praying even when…','🛐',['It was against the law','He was asleep','It was raining','He was eating']],['The king who liked Daniel was…','👑',['Darius','Pharaoh','Herod','Goliath']]],
+jesus:[['Nicodemus visited Jesus at…','🌙',['Night','Breakfast','The beach','School']],['Thomas believed after he…','👀',['Saw Jesus','Read a book','Sailed a boat','Built a house']],['Jesus taught that we should love…','💜',['God and others','Only friends','Only ourselves','Nobody']]],
+nehemiah:[['Nehemiah helped rebuild the walls of…','🧱',['Jerusalem','Rome','Egypt','Babylon']],['Nehemiah prayed and then…','🛠️',['Worked hard','Gave up','Ran away','Slept']]],
+noah:[['Noah built a big boat called an…','🚢',['Ark','Canoe','Raft','Submarine']],['God put a ___ in the sky as a promise.','🌈',['Rainbow','Star','Cloud','Kite']],['Animals came onto the ark in…','🦒',['Pairs','Hundreds of the same','Ones','Nobody came']]],
+david:[['David fought the giant…','🪨',['Goliath','Pharaoh','Saul','Samson']],['David was a shepherd who cared for…','🐑',['Sheep','Lions','Camels','Fish']],['David became a…','👑',['King','Fisherman','Tax collector','Pharaoh']]],
+jacob:[['Jacob\'s twin brother was…','👬',['Esau','Joseph','Abel','Isaac']],['Jacob\'s father was…','👴',['Isaac','Abraham','Noah','Moses']]],
+jeremiah:[['Jeremiah was a…','📣',['Prophet','King','Fisherman','Soldier']],['Even in hard times Jeremiah stayed…','🌅',['Hopeful in God','Angry','Asleep','Lost']]],
+draw:[['Drawings often start with simple…','✏️',['Shapes','Words','Numbers only','Stickers']],['Mixing blue and yellow makes…','🎨',['Green','Purple','Orange','Pink']],['Mixing red and yellow makes…','🎨',['Orange','Green','Blue','Black']],['Red, yellow and blue are the ___ colors.','🖍️',['Primary','Secondary','Neutral','Night']],['An artist who paints with dots is using…','🔵',['Pointillism','Sculpture','Music','Pottery']]]
+};
+const TOPIC_FALL={math:'numbers',reading:'grammar',science:'animals',geography:'world',bible:'creation',art:'draw'};
+// math generators (tier 1..3)
+function mathQ(tp,tier){const g=[];const T=tier;
+ const gens={
+ place:()=>{const n=100+R(T>1?9900:900);const ds=String(n).split('');const i=R(ds.length);const names=['ones','tens','hundreds','thousands'];const pos=ds.length-1-i;return [`In ${n.toLocaleString()}, what is the value of the digit ${ds[i]}?`,'🔢',(+ds[i]*10**pos),[+ds[i],+ds[i]*10**((pos+1)%4),+ds[i]*10**((pos+2)%4)]]},
+ add:()=>{const a=15+R(T*60),b=17+R(T*50);return [`${a} + ${b} = ?`,'➕',a+b,[a+b+10,a+b-10,a+b+1]]},
+ sub:()=>{const a=50+R(T*80),b=11+R(a-20);return [`${a} − ${b} = ?`,'➖',a-b,[a-b+10,a-b-1,a-b+2]]},
+ mul:()=>{const a=2+R(T<2?4:9),b=2+R(T<2?5:9);return [`${a} × ${b} = ?`,'✖️',a*b,[a*b+a,a*b-b,a+b]]},
+ div:()=>{const b=2+R(T<2?3:8),q=2+R(8);return [`${b*q} ÷ ${b} = ?`,'➗',q,[q+1,q-1,b]]},
+ frac:()=>{const d=pick([2,3,4,6,8]),n=1+R(d-1);return [`A pizza is cut into ${d} equal slices. You eat ${n}. What fraction did you eat?`,'🍕',`${n}/${d}`,[`${d}/${n}`,`${n}/${d+1}`,`1/${n+d}`]]},
+ time:()=>{const h=1+R(12),m=pick([0,15,30,45]),add=pick([15,30,60]);let mm=m+add,hh=h+Math.floor(mm/60);mm%=60;hh=(hh-1)%12+1;const f=(a,b)=>a+':'+String(b).padStart(2,'0');return [`It is ${f(h,m)}. What time will it be in ${add} minutes?`,'⏰',f(hh,mm),[f(h,(m+30)%60),f(hh%12+1,mm),f(h,m)]]},
+ money:()=>{const q=R(4),d=R(4),n=R(3),p=1+R(5);const t=q*25+d*10+n*5+p;return [`How many cents: ${q} quarters, ${d} dimes, ${n} nickels and ${p} pennies?`,'🪙',t+'¢',[(t+5)+'¢',(t-1)+'¢',(t+10)+'¢']]},
+ word:()=>{const a=3+R(6),b=2+R(T*4);return pick([[`Amelia has ${a} bags with ${b} marbles each. How many marbles in all?`,'🫙',a*b,[a+b,a*b+b,a*b-1]],[`A bookshelf has ${a*b} books shared equally on ${a} shelves. How many on each shelf?`,'📚',b,[b+1,a,b+2]],[`Amelia read ${a*10} pages Monday and ${b*10+5} pages Tuesday. How many pages total?`,'📖',a*10+b*10+5,[a*10+b*10,a*10+b*10+15,a+b]]])},
+ logic:()=>pick([['What comes next? 2, 4, 8, 16, …','🧩',32,[18,20,24]],['What comes next? 5, 10, 15, 20, …','🧩',25,[21,30,22]],['What comes next? 1, 4, 9, 16, …','🧩',25,[20,17,32]],['Mia is taller than Zoe. Zoe is taller than Ava. Who is shortest?','🧍‍♀️','Ava',['Mia','Zoe','They are equal']],['I am a number. Double me and add 3 to get 11. What am I?','🤔',4,[8,5,3]],['A triangle has how many sides?','🔺',3,[4,5,6]]]),
+ shape:()=>pick([['How many sides does a hexagon have?','⬡',6,[5,8,4]],['How many lines of symmetry does a square have?','⬛',4,[2,1,8]],['A shape with 8 sides is an…','🛑','Octagon',['Hexagon','Pentagon','Triangle']],['Sliding a shape without turning it is called a…','➡️','Translation',['Rotation','Reflection','Fraction']],['Flipping a shape like a mirror is a…','🪞','Reflection',['Translation','Rotation','Division']]]),
+ measure:()=>pick([['How many cups are in a pint?','🥛',2,[4,1,8]],['How many quarts are in a gallon?','🪣',4,[2,8,3]],['Which holds more?','🧃','A gallon',['A cup','A pint','A quart']],['How many inches are in a foot?','📏',12,[10,100,3]]]),
+ roman:()=>pick([['What number is the Roman numeral X?','🏛️',10,[5,50,1]],['What number is the Roman numeral V?','🏛️',5,[10,50,100]],['What is XII?','🏛️',12,[7,21,102]]])};
+ const pref={numbers:['place','add','sub','mul','word','logic','roman','div'],fractions:['frac','frac','frac','div','mul','word'],money:['money','money','word','add','sub'],shapes:['shape','shape','logic','mul'],measure:['measure','measure','time','word']}[tp]||['add','sub','mul'];
+ const all=['place','add','sub','mul','div','frac','time','money','word','logic'];
+ for(let i=0;i<10;i++){const gname=i<5?pref[i%pref.length]:pick(all);const[q,e,a,w]=gens[gname]();const opts=shuf([a,...[...new Set(w.map(String))].filter(x=>x!==String(a)).slice(0,3)]);g.push({q,e,a:String(a),o:opts.map(String)})}return g}
+function buildQuiz(v,tier){if(v.cat==='math')return mathQ(v.tp,tier);let pool=(BANK[v.tp]||[]).slice();const extra=Object.entries(BANK).filter(([k])=>k!==v.tp&&(TOPIC_FALL[v.cat]===k||catOf(k)===v.cat)).flatMap(([k,a])=>a);let qs=shuf(pool).concat(shuf(extra));
+ const out=[];const seen=new Set();for(const[q,e,o]of qs){if(seen.has(q))continue;seen.add(q);out.push({q,e,a:o[0],o:shuf(o)});if(out.length>=8)break}
+ const mq=mathQ('numbers',tier);while(out.length<10)out.push(Object.assign(mq.pop(),{bonus:1}));return shuf(out)}
+const CATMAP={volcano:'science',space:'science',gravity:'science',matter:'science',engineering:'science',body:'science',animals:'science',earth:'science',states:'geography',world:'geography',history:'geography',lit:'reading',poetry:'reading',phonics:'reading',grammar:'reading',creation:'bible',daniel:'bible',jesus:'bible',nehemiah:'bible',noah:'bible',david:'bible',jacob:'bible',jeremiah:'bible',draw:'art'};
+const catOf=k=>CATMAP[k];
+// ---------- quiz ----------
+let Q=null;
+function startQuiz(id){const v=VIDS.find(x=>x.id===id)||(set.extra||[]).find(x=>x.id===id)||{id,cat:'science',tp:'animals',t:'Video'};const tier=ctx?LV[ctx.level].tier:2;Q={v,qs:buildQuiz(v,tier),i:0,score:0,first:true,log:[]};$('#quizOv').classList.add('on');showQ()}
+function showQ(){const q=Q.qs[Q.i];$('#quizBox').innerHTML=`<button class="close" id="qx">✕</button><div style="font-weight:800;color:var(--p)">${CATS[Q.v.cat][1]} Quiz · Question ${Q.i+1} of ${Q.qs.length}</div><div class="qprog"><i style="width:${Q.i/Q.qs.length*100}%"></i></div><div class="qpic">${q.e}</div><div class="big" style="text-align:center;font-weight:700">${esc(q.q)} <button class="hbtn" style="background:#ede9fe;font-size:18px" id="rd">🔊</button></div><div class="ans">${q.o.map(o=>`<button>${esc(o)}</button>`).join('')}</div><div id="fb" style="text-align:center;font-weight:800;min-height:28px;margin-top:10px"></div>`;
+ $('#qx').onclick=()=>{$('#quizOv').classList.remove('on');speechSynthesis&&speechSynthesis.cancel();renderAll()};$('#rd').onclick=()=>say(q.q+'. '+q.o.join(', or '));say(q.q);Q.first=true;
+ document.querySelectorAll('.ans button').forEach(b=>b.onclick=()=>{if(b.textContent===q.a){b.classList.add('ok');if(Q.first)Q.score++;Q.log.push({q:q.q,ok:Q.first});$('#fb').textContent=pick(['Brilliant! 🌟','Exactly right! ✨','You nailed it! 💜','Super smart! 🧠']);say($('#fb').textContent.replace(/[^\w! ]/g,''));setTimeout(()=>{Q.i++;Q.i<Q.qs.length?showQ():finishQuiz()},900)}else{b.classList.add('no');b.disabled=true;Q.first=false;$('#fb').textContent='Not quite — try again! You can do it.';say('Not quite. Try again!')}})}
+function finishQuiz(){const v=Q.v,sc=Q.score,n=Q.qs.length,stars=sc>=9?3:sc>=7?2:1;S.set('stars',S.get('stars',0)+stars);
+ const h=S.get('hist',[]);h.push({date:today(),t:new Date().toLocaleTimeString(),id:v.id,title:clean(v.t),cat:v.cat,score:sc,of:n,level:ctx?LV[ctx.level].n:null,ans:Q.log});S.set('hist',h);
+ let msg='',lvlDone=false;if(ctx){const l=LV[ctx.level],p=prog();p.vdone[l.n]=[...new Set([...(p.vdone[l.n]||[]),v.id])];if(l.vids.every(x=>p.vdone[l.n].includes(x))&&!p.done.includes(l.n)){p.done.push(l.n);lvlDone=true;const d=day();d.lessons.push(l.n);saveDay(d)}S.set('prog',p)}
+ const nextV=ctx&&!lvlDone?LV[ctx.level].vids.find(x=>!(prog().vdone[LV[ctx.level].n]||[]).includes(x)):null;
+ $('#quizBox').innerHTML=`<div class="msg"><div class="heart">🏆</div><p>${sc} out of ${n}!</p><div style="font-size:40px">${'⭐'.repeat(stars)}</div><div style="font-size:18px;margin:10px 0">${lvlDone?'Level complete! A new level is unlocked. 🎉':sc>=7?'Amazing thinking, Amelia!':'Great effort — every try makes your brain stronger!'}</div><div class="row" style="justify-content:center">${nextV?'<button class="btn t" id="nv">Next video ➜</button>':''}<button class="btn" id="qd">Done</button></div></div>`;
+ confetti();say(`You got ${sc} out of ${n}! ${lvlDone?'Level complete!':''}`);
+ $('#qd').onclick=()=>{$('#quizOv').classList.remove('on');renderAll();if(locked())doLock('lessons')};if(nextV)$('#nv').onclick=()=>{$('#quizOv').classList.remove('on');if(locked())return doLock('lessons');playVid(nextV)}}
+function confetti(){const c=$('#conf'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const ps=Array.from({length:120},()=>({x:Math.random()*c.width,y:-20-Math.random()*200,v:2+Math.random()*4,r:4+Math.random()*5,c:pick(['#7c3aed','#f43f5e','#f59e0b','#0d9488','#a78bfa'])}));let f=0;(function a(){x.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.y+=p.v;p.x+=Math.sin((p.y+f)/30);x.fillStyle=p.c;x.fillRect(p.x,p.y,p.r,p.r*1.6)});if(++f<150)requestAnimationFrame(a);else x.clearRect(0,0,c.width,c.height)})()}
+// ---------- daily message ----------
+function showMsg(){const all=MSGS.concat(set.custom||[]);let last=S.get('lastmsg',-1),i;do{i=R(all.length)}while(all.length>1&&i===last);S.set('lastmsg',i);$('#msgTxt').textContent=all[i];$('#msgSig').textContent=set.sig;$('#msgOv').classList.add('on');say(all[i]+' '+set.sig)}
+$('#msgGo').onclick=()=>{$('#msgOv').classList.remove('on');speechSynthesis&&speechSynthesis.cancel();if(locked())doLock('lessons')};
+// ---------- PIN ----------
+let pinBuf='',pinCb=null;function askPin(cb){pinBuf='';pinCb=cb;$('#pinD').textContent='○○○○';$('#pinOv').classList.add('on')}
+$('#kp').innerHTML=[1,2,3,4,5,6,7,8,9,'⌫',0,'✓'].map(k=>`<button data-k="${k}">${k}</button>`).join('');
+document.querySelectorAll('#kp button').forEach(b=>b.onclick=()=>{const k=b.dataset.k;if(k==='⌫')pinBuf=pinBuf.slice(0,-1);else if(k!=='✓'&&pinBuf.length<4)pinBuf+=k;$('#pinD').textContent='●'.repeat(pinBuf.length)+'○'.repeat(4-pinBuf.length);if(pinBuf.length===4){if(pinBuf===set.pin){$('#pinOv').classList.remove('on');pinCb&&pinCb()}else{$('#pinQ').textContent='Wrong PIN, try again';pinBuf='';setTimeout(()=>$('#pinD').textContent='○○○○',300)}}});
+$('#pinX').onclick=()=>$('#pinOv').classList.remove('on');
+$('#parentBtn').onclick=()=>askPin(openParent);$('#lockPar').onclick=()=>askPin(()=>{$('#lockOv').classList.remove('on');openParent()});
+// ---------- parent dashboard ----------
+function openParent(){const h=S.get('hist',[]),d=day(),p=prog(),mins=S.get('mins',{}),ll=S.get('locklog',[]);const tot=h.reduce((a,x)=>a+x.score,0),of=h.reduce((a,x)=>a+x.of,0);
+ const bycat=Object.keys(CATS).map(c=>{const r=h.filter(x=>x.cat===c);const s=r.reduce((a,x)=>a+x.score,0),o=r.reduce((a,x)=>a+x.of,0);return `<tr><td>${CATS[c][1]} ${CATS[c][0]}</td><td>${r.length}</td><td>${o?Math.round(s/o*100)+'%':'—'}</td></tr>`}).join('');
+ const days=[...Array(7)].map((_,i)=>{const dt=new Date();dt.setDate(dt.getDate()-6+i);const k=dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');const r=h.filter(x=>x.date===k);const s=r.reduce((a,x)=>a+x.score,0),o=r.reduce((a,x)=>a+x.of,0);return{l:dt.toLocaleDateString(undefined,{weekday:'short'}),pc:o?Math.round(s/o*100):0,m:mins[k]||0}});
+ $('#parBox').innerHTML=`<button class="close" id="px">✕</button><h2>👩‍👧 Parent Dashboard</h2>
+ <div class="row"><div class="sec" style="flex:1"><h3>Today</h3>${d.lessons.length} / ${set.maxLessons} lessons · ${Math.round(d.sec/60)} / ${set.maxMin} min ${locked()?'· <b style="color:#e11d48">Locked</b>':d.unlocked?'· <b>Unlocked by parent</b>':''}<br><button class="btn t" id="unl" style="margin-top:8px">Unlock for today</button></div>
+ <div class="sec" style="flex:1"><h3>Overall</h3>Level ${p.done.length} of ${LV.length} complete<br>${h.length} quizzes · ${of?Math.round(tot/of*100):0}% correct<br>⭐ ${S.get('stars',0)} stars</div></div>
+ <div class="sec"><h3>7-day trend (% correct · minutes)</h3><div class="bars">${days.map(x=>`<div><i style="height:${Math.max(3,x.pc)}px"></i>${x.pc}%<br>${x.m}m<br>${x.l}</div>`).join('')}</div></div>
+ <div class="sec"><h3>By subject</h3><table><tr><th>Subject</th><th>Quizzes</th><th>% correct</th></tr>${bycat}</table></div>
+ <div class="sec"><h3>Quiz history (score per video)</h3><div style="max-height:220px;overflow:auto"><table><tr><th>Date</th><th>Video</th><th>Subject</th><th>Score</th></tr>${h.slice().reverse().map(x=>`<tr><td>${x.date} ${x.t}</td><td>${esc(x.title)}</td><td>${CATS[x.cat][1]}</td><td><b>${x.score}/${x.of}</b></td></tr>`).join('')||'<tr><td colspan=4>No quizzes yet</td></tr>'}</table></div></div>
+ <div class="sec"><h3>Lockout log</h3>${ll.slice(-7).reverse().map(x=>`${x.date} ${x.at} — ${x.why==='time'?'time limit':'lesson limit'}`).join('<br>')||'None yet'}</div>
+ <div class="sec"><h3>Settings</h3><div class="row">Lessons/day <input id="sL" type="number" min="1" max="20" value="${set.maxLessons}" style="width:70px"> Minutes/day <input id="sM" type="number" min="10" max="600" value="${set.maxMin}" style="width:80px"> New PIN <input id="sP" maxlength="4" inputmode="numeric" placeholder="4 digits" style="width:100px"></div>
+ <div class="row" style="margin-top:8px">Message signature <input id="sS" value="${esc(set.sig)}"> <label class="sw"><input type="checkbox" id="sT" ${set.tts?'checked':''}> Read aloud</label></div>
+ <div style="margin-top:8px">Add your own daily messages (one per line):<br><textarea id="sC" rows="3" style="width:100%">${esc((set.custom||[]).join('\n'))}</textarea></div>
+ <div class="row" style="margin-top:8px">Add a YouTube video ID <input id="aV" placeholder="e.g. dQw4w9WgXcQ" style="width:150px"> <select id="aC">${Object.entries(CATS).map(([k,c])=>`<option value="${k}">${c[0]}</option>`).join('')}</select> Hide video ID <input id="hV" style="width:150px"></div>
+ <div class="row" style="margin-top:10px"><button class="btn" id="sv">Save settings</button><button class="btn alt" id="ex">Export data</button><button class="btn c" id="rs">Reset progress</button></div></div>`;
+ $('#px').onclick=()=>{$('#parOv').classList.remove('on');renderAll();if(locked())doLock('lessons')};
+ $('#unl').onclick=()=>{const d=day();d.unlocked=true;saveDay(d);openParent()};
+ $('#sv').onclick=()=>{set.maxLessons=+$('#sL').value||3;set.maxMin=+$('#sM').value||180;const np=$('#sP').value.trim();if(/^\d{4}$/.test(np))set.pin=np;set.sig=$('#sS').value.trim()||'Love, Mom';set.tts=$('#sT').checked;set.custom=$('#sC').value.split('\n').map(s=>s.trim()).filter(Boolean);const av=$('#aV').value.trim();if(/^[\w-]{11}$/.test(av)){set.extra=(set.extra||[]).concat({id:av,t:'Added by parent',ch:'Parent pick',cat:$('#aC').value,tp:TOPIC_FALL[$('#aC').value]})}const hv=$('#hV').value.trim();if(hv)set.hidden=(set.hidden||[]).concat(hv);saveSet();ttsIcon();alert('Saved!');openParent()};
+ $('#ex').onclick=()=>{const data={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k.startsWith(K))data[k]=localStorage.getItem(k)}const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:'application/json'}));a.download='amelia-progress-'+today()+'.json';a.click()};
+ $('#rs').onclick=()=>{if(confirm('Reset all of Amelia\'s progress and history? Settings are kept.')){['prog','hist','stars','day','mins','locklog'].forEach(k=>localStorage.removeItem(K+k));openParent()}};
+ $('#parOv').classList.add('on')}
+// ---------- tabs ----------
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{if(b.dataset.t==='msg'){showMsg();return}document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));$('#pathV').hidden=b.dataset.t!=='path';$('#freeV').hidden=b.dataset.t!=='free'});
+function renderAll(){renderPath();renderFree()}
+ttsIcon();renderAll();showMsg();
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js',{scope:'./'}).catch(()=>{});
+</script></body></html>
