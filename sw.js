@@ -1,4 +1,4 @@
-const VERSION='20261011180235';const SHELL='amelia-ld-shell-'+VERSION;
+const VERSION='20261014095707';const SHELL='amelia-ld-shell-'+VERSION;
 const PRE=['./','index.html','manifest.webmanifest','icons/icon-180.png','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(SHELL).then(c=>c.addAll(PRE)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k.startsWith('amelia-ld-')&&k!==SHELL).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});

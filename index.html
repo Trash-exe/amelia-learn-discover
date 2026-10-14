@@ -79,7 +79,519 @@ input,textarea,select{font:inherit;padding:8px;border-radius:10px;border:1px sol
 <div class="ov" id="lockOv"><div class="box msg"><div class="heart">🌙</div><p>All done for today, Amelia!</p><div style="font-size:18px;color:#6b5b95">You worked so hard. Come back tomorrow for more discoveries.</div><br><button class="btn alt" id="lockPar">Grown-ups 🔒</button></div></div>
 <canvas class="conf" id="conf"></canvas>
 <script>
-const VIDS=[{"id": "uC2CoaA1plM", "t": "Number Songs for Kids!  | Learn to Count for Kids Compilation | Numberblocks", "ch": "Numberblocks", "cat": "math", "tp": "numbers"}, {"id": "OdNkLG3k33s", "t": "I’m a Number Detective | Learn to Count | Numberblocks", "ch": "Numberblocks", "cat": "math", "tp": "numbers"}, {"id": "pWJzqTYS8no", "t": "Fractions on the Number Line - Math Antics", "ch": "Math Antics", "cat": "math", "tp": "fractions"}, {"id": "I1u3pM9g9o8", "t": "What Are Fractions? - Math Antics", "ch": "Math Antics", "cat": "math", "tp": "fractions"}, {"id": "QHq3CSoal0I", "t": "Symmetry - Math Antics", "ch": "Math Antics", "cat": "math", "tp": "shapes"}, {"id": "DbYbIB4m3RM", "t": "Math Antics - Dollars And Cents", "ch": "Math Antics", "cat": "math", "tp": "money"}, {"id": "P_qD1GJ1dR8", "t": "Math Antics - Roman Numerals", "ch": "Math Antics", "cat": "math", "tp": "numbers"}, {"id": "61OPqIp9xkA", "t": "Transformations - Math Antics", "ch": "Math Antics", "cat": "math", "tp": "shapes"}, {"id": "ZoD2huhsTYE", "t": "Back to School Math Party for Kids! | Elementary Math Lessons", "ch": "Homeschool Pop", "cat": "math", "tp": "numbers"}, {"id": "pCN-IjSo8j0", "t": "Liquid Measurements For Kids | Cups, Pints, Quarts, & Gallons", "ch": "Homeschool Pop", "cat": "math", "tp": "measure"}, {"id": "XjR2B3YJH9U", "t": "What is an inference? (Charlotte’s Web): Crash Course Kids Literature #1", "ch": "Crash Course Kids", "cat": "reading", "tp": "lit"}, {"id": "WrUX6j9MwUY", "t": "Character Traits Explained (King and the Dragonflies): Crash Course Kids Literature #2", "ch": "Crash Course Kids", "cat": "reading", "tp": "lit"}, {"id": "QVw521JjRjA", "t": "How to find themes (A Wrinkle in Time): Crash Course Kids Literature #3", "ch": "Crash Course Kids", "cat": "reading", "tp": "lit"}, {"id": "ML2oX207Mwc", "t": "Understanding nonfiction: Crash Course Kids Literature #4", "ch": "Crash Course Kids", "cat": "reading", "tp": "lit"}, {"id": "klu7TNy-7qw", "t": "Poetry explained (Inside Out & Back Again by Thanhhà Lại): Crash Course Kids Literature #5", "ch": "Crash Course Kids", "cat": "reading", "tp": "poetry"}, {"id": "PkWU-lMdnJg", "t": "How to compare and contrast (Little Red Riding Hood): Crash Course Kids Literature #6", "ch": "Crash Course Kids", "cat": "reading", "tp": "lit"}, {"id": "Hocfvp5QItE", "t": "Alphabet Zoo | UFLI Version | Jack Hartmann", "ch": "Jack Hartmann", "cat": "reading", "tp": "phonics"}, {"id": "UQi-eTGICTk", "t": "The Worker Bees' ABCs! | Jack Hartmann", "ch": "Jack Hartmann", "cat": "reading", "tp": "phonics"}, {"id": "L0Cb6Vg6YUE", "t": "Come Together! | Jack Hartmann ft. @MCGrammarTV", "ch": "Jack Hartmann", "cat": "reading", "tp": "grammar"}, {"id": "TaqsdQADC6s", "t": "Exploring Our Solar System - A FreeSchool Reader Read-Aloud Book For Kids (Solar System Book 1)", "ch": "Free School", "cat": "reading", "tp": "space"}, {"id": "WX_E1CAZjaQ", "t": "KABOOM! All About Volcanoes! | SciShow Kids Compilation", "ch": "SciShow Kids", "cat": "science", "tp": "volcano"}, {"id": "0jKoOUZ1GBM", "t": "Every Kind of Volcano | SciShow Kids", "ch": "SciShow Kids", "cat": "science", "tp": "volcano"}, {"id": "8qdYCpSW2eY", "t": "The Biggest Volcano Ever is in Space! | SciShow Kids", "ch": "SciShow Kids", "cat": "science", "tp": "space"}, {"id": "Td_A9H69eE8", "t": "Space Compilation: Crash Course Kids", "ch": "Crash Course Kids", "cat": "science", "tp": "space"}, {"id": "EwY6p-r_hyU", "t": "Gravity Compilation: Crash Course Kids", "ch": "Crash Course Kids", "cat": "science", "tp": "gravity"}, {"id": "wyRy8kowyM8", "t": "Matter Compilation: Crash Course Kids", "ch": "Crash Course Kids", "cat": "science", "tp": "matter"}, {"id": "qDcMq1SjR_I", "t": "Engineering Compilation: Crash Course Kids", "ch": "Crash Course Kids", "cat": "science", "tp": "engineering"}, {"id": "CZhE2p46vJk", "t": "Food Chains Compilation: Crash Course Kids", "ch": "Crash Course Kids", "cat": "science", "tp": "animals"}, {"id": "XtSq1wcFSEI", "t": "Your Body's Senses | SciShow Kids Compilation", "ch": "SciShow Kids", "cat": "science", "tp": "body"}, {"id": "vKxpbmdPSyk", "t": "Senses You Didn’t Know You Have | SciShow Kids", "ch": "SciShow Kids", "cat": "science", "tp": "body"}, {"id": "6WNHyAXIN8c", "t": "How Ears Let Us Hear the World! | SciShow Kids", "ch": "SciShow Kids", "cat": "science", "tp": "body"}, {"id": "annJ7XUxMjk", "t": "Going to the Doctor! | SciShow Kids Compilation", "ch": "SciShow Kids", "cat": "science", "tp": "body"}, {"id": "Df49TC9NONk", "t": "Weird But True Full Episode | The Science Behind Your Senses! | Nat Geo Kids", "ch": "National Geographic Kids", "cat": "science", "tp": "body"}, {"id": "RvRU_4XWPlw", "t": "Solving Problems Around the Fort! | SciShow Kids", "ch": "SciShow Kids", "cat": "science", "tp": "engineering"}, {"id": "YBGPMztHR4Y", "t": "Octopus Showdown 🐙 | Whoa Factor | Nat Geo Kids", "ch": "National Geographic Kids", "cat": "science", "tp": "animals"}, {"id": "9hADH1YQn08", "t": "Teaching Baby Meerkats at Survival School! 🎒 Animal Card Quest | Nat Geo Kids", "ch": "National Geographic Kids", "cat": "science", "tp": "animals"}, {"id": "aPKGR4MQlXw", "t": "Space Rockets and Sneakers 🚀👟 | Made in a Day Full Episode | Nat Geo Kids", "ch": "National Geographic Kids", "cat": "science", "tp": "engineering"}, {"id": "ilQIiwbDnfI", "t": "Computers Are Awesome! | Computer Literacy for Kids | Jack Hartmann", "ch": "Jack Hartmann", "cat": "science", "tp": "engineering"}, {"id": "dN0rdptUfas", "t": "How Do Leaves Change Color in Fall?", "ch": "Homeschool Pop", "cat": "science", "tp": "earth"}, {"id": "nXshD8Bz7Ac", "t": "How Do Pine Cones Help Grow New Trees?", "ch": "Homeschool Pop", "cat": "science", "tp": "earth"}, {"id": "HIABLFc7EXA", "t": "What Is an Acorn's Cap Called?", "ch": "Homeschool Pop", "cat": "science", "tp": "earth"}, {"id": "zmAmDi_leqg", "t": "Fall Lessons for Kids | Learn About Autumn and Fall Animals", "ch": "Homeschool Pop", "cat": "science", "tp": "earth"}, {"id": "PI9tlYxluX0", "t": "Cactus Facts for Kids | Learn About Cacti", "ch": "Homeschool Pop", "cat": "science", "tp": "animals"}, {"id": "LE8agcLlma8", "t": "What is Snow for Children: How Do Snowflakes Form and Why Does it Snow for Kids - FreeSchool", "ch": "Free School", "cat": "science", "tp": "earth"}, {"id": "PmFP4K8-3NA", "t": "10 Interesting Facts About Polar Bears for Children: Learn About Polar Bears for Kids - FreeSchool", "ch": "Free School", "cat": "science", "tp": "animals"}, {"id": "K-34rankRkw", "t": "10 Interesting Facts About Penguins for Children: Learn About Penguins for Kids - FreeSchool", "ch": "Free School", "cat": "science", "tp": "animals"}, {"id": "jZlral-M38w", "t": "All About Sea Lions for Kids: Sea Lion Facts and Information for Children - FreeSchool", "ch": "Free School", "cat": "science", "tp": "animals"}, {"id": "ul0O3qYXSRQ", "t": "All About Reindeer or Caribou for Kids: Reindeer Facts and Information for Children - FreeSchool", "ch": "Free School", "cat": "science", "tp": "animals"}, {"id": "Fu_8KkQagAk", "t": "5 Characteristics of Living Organisms: Qualities of Living Things for Kids - FreeSchool", "ch": "Free School", "cat": "science", "tp": "animals"}, {"id": "BvEIcjONyRU", "t": "Learn All 50 States of the U.S. | U.S. Geography for Kids", "ch": "Homeschool Pop", "cat": "geography", "tp": "states"}, {"id": "OllsJCAeVN8", "t": "Exciting Social Studies Lessons | The Constitution, Landmarks, & More", "ch": "Homeschool Pop", "cat": "geography", "tp": "history"}, {"id": "v8cDsAf0nN0", "t": "Squeaks' Adventure Around The World! | SciShow Kids", "ch": "SciShow Kids", "cat": "geography", "tp": "world"}, {"id": "kKqd0_cydZM", "t": "Iceland: A Land of Ice AND Fire! | SciShow Kids", "ch": "SciShow Kids", "cat": "geography", "tp": "world"}, {"id": "HhXnRfyUbeQ", "t": "The Fiordlands of New Zealand! | SciShow Kids", "ch": "SciShow Kids", "cat": "geography", "tp": "world"}, {"id": "0U4lOGo593k", "t": "Yellowstone: The World’s First National Park! | SciShow Kids", "ch": "SciShow Kids", "cat": "geography", "tp": "states"}, {"id": "YR4wtGWK7eE", "t": "Hawai’i: Land of Volcanoes | SciShow Kids", "ch": "SciShow Kids", "cat": "geography", "tp": "states"}, {"id": "sm7O4R1uN9s", "t": "All About the Mayflower for Children: Learn  Facts About the Mayflower for Kids - FreeSchool", "ch": "Free School", "cat": "geography", "tp": "history"}, {"id": "TCCP4MCy0Ck", "t": "The Louisiana Purchase for Kids: Facts About the Louisiana Purchase for Children - FreeSchool", "ch": "Free School", "cat": "geography", "tp": "history"}, {"id": "zta2y7cAMDk", "t": "Exploring the Grand Canyon for Children: Learn How the Grand Canyon was Formed for Kids - FreeSchool", "ch": "Free School", "cat": "geography", "tp": "states"}, {"id": "qmd6Izx2ZkA", "t": "Egyptian Hieroglyphs and the Rosetta Stone: the Discovery of the Rosetta Stone for Kids - FreeSchool", "ch": "Free School", "cat": "geography", "tp": "history"}, {"id": "kCk92M0HMqU", "t": "The Beautiful Garden of Eden | Superbook - In The Beginning English Clip", "ch": "Superbook", "cat": "bible", "tp": "creation"}, {"id": "x19UYUaJ0rs", "t": "The Story of Creation | Superbook - In The Beginning English Clip", "ch": "Superbook", "cat": "bible", "tp": "creation"}, {"id": "mc0JmNUcqWI", "t": "Focus On What God Has Told You to Do | Superbook - Nehemiah English Clip", "ch": "Superbook", "cat": "bible", "tp": "nehemiah"}, {"id": "26vi-UsyYFk", "t": "Nicodemus Met Jesus | Superbook - Nicodemus English Clip", "ch": "Superbook", "cat": "bible", "tp": "jesus"}, {"id": "3pH5GIr83XQ", "t": "God Was With Daniel Inside the Lion’s Den | Superbook - Roar English Clip", "ch": "Superbook", "cat": "bible", "tp": "daniel"}, {"id": "tNAySuLjQuE", "t": "Superbook - Roar - Season 1 Episode 7 - Full Episode Premiere", "ch": "Superbook", "cat": "bible", "tp": "daniel"}, {"id": "PrjGvyweh8w", "t": "How To Draw Marshall From PAW Patrol: The Dino Movie", "ch": "Art for Kids Hub", "cat": "art", "tp": "draw"}, {"id": "cXR3ol0hUSY", "t": "Superbook - David & Saul - Season 3 Episode 7 - Full Episode (Official HD Version)", "ch": "Superbook", "cat": "bible", "tp": "david"}, {"id": "7nCutwbZ4nw", "t": "Thomas Finally Saw Jesus! | Superbook - Doubting Thomas English Clip", "ch": "Superbook", "cat": "bible", "tp": "jesus"}, {"id": "PrpgO5oaHm0", "t": "Daniel Never Stopped Praying to God | Superbook - Roar English Clip", "ch": "Superbook", "cat": "bible", "tp": "daniel"}, {"id": "_bBR6x4NYCM", "t": "We Have a Promise-keeping God! | Superbook - Noah and the Ark English Clip", "ch": "Superbook", "cat": "bible", "tp": "noah"}, {"id": "YHh6UmE2Uus", "t": "Jeremiah Remained Hopeful in God | Superbook - Jeremiah English Clip", "ch": "Superbook", "cat": "bible", "tp": "jeremiah"}, {"id": "uyPWmjpYz18", "t": "Superbook - Jacob & Esau - Season 1 Episode 3 - Full Episode (Official HD Version)", "ch": "Superbook", "cat": "bible", "tp": "jacob"}];
+const VIDS=[
+ {
+  "id": "aqMh7Bd5DCw",
+  "t": "@Numberblocks- Numberblobs | Learn to Count",
+  "ch": "Numberblocks",
+  "cat": "math",
+  "tp": "numbers"
+ },
+ {
+  "id": "OdNkLG3k33s",
+  "t": "I’m a Number Detective | Learn to Count | Numberblocks",
+  "ch": "Numberblocks",
+  "cat": "math",
+  "tp": "numbers"
+ },
+ {
+  "id": "pWJzqTYS8no",
+  "t": "Fractions on the Number Line - Math Antics",
+  "ch": "Math Antics",
+  "cat": "math",
+  "tp": "fractions"
+ },
+ {
+  "id": "I1u3pM9g9o8",
+  "t": "What Are Fractions? - Math Antics",
+  "ch": "Math Antics",
+  "cat": "math",
+  "tp": "fractions"
+ },
+ {
+  "id": "QHq3CSoal0I",
+  "t": "Symmetry - Math Antics",
+  "ch": "Math Antics",
+  "cat": "math",
+  "tp": "shapes"
+ },
+ {
+  "id": "DbYbIB4m3RM",
+  "t": "Math Antics - Dollars And Cents",
+  "ch": "Math Antics",
+  "cat": "math",
+  "tp": "money"
+ },
+ {
+  "id": "P_qD1GJ1dR8",
+  "t": "Math Antics - Roman Numerals",
+  "ch": "Math Antics",
+  "cat": "math",
+  "tp": "numbers"
+ },
+ {
+  "id": "61OPqIp9xkA",
+  "t": "Transformations - Math Antics",
+  "ch": "Math Antics",
+  "cat": "math",
+  "tp": "shapes"
+ },
+ {
+  "id": "bKNWZ57Tu70",
+  "t": "Count by 2's Song | First Grade and Kindergarten Counting For Kids",
+  "ch": "Homeschool Pop",
+  "cat": "math",
+  "tp": "numbers"
+ },
+ {
+  "id": "pCN-IjSo8j0",
+  "t": "Liquid Measurements For Kids | Cups, Pints, Quarts, & Gallons",
+  "ch": "Homeschool Pop",
+  "cat": "math",
+  "tp": "measure"
+ },
+ {
+  "id": "XjR2B3YJH9U",
+  "t": "What is an inference? (Charlotte’s Web): Crash Course Kids Literature #1",
+  "ch": "Crash Course Kids",
+  "cat": "reading",
+  "tp": "lit"
+ },
+ {
+  "id": "WrUX6j9MwUY",
+  "t": "Character Traits Explained (King and the Dragonflies): Crash Course Kids Literature #2",
+  "ch": "Crash Course Kids",
+  "cat": "reading",
+  "tp": "lit"
+ },
+ {
+  "id": "QVw521JjRjA",
+  "t": "How to find themes (A Wrinkle in Time): Crash Course Kids Literature #3",
+  "ch": "Crash Course Kids",
+  "cat": "reading",
+  "tp": "lit"
+ },
+ {
+  "id": "ML2oX207Mwc",
+  "t": "Understanding nonfiction: Crash Course Kids Literature #4",
+  "ch": "Crash Course Kids",
+  "cat": "reading",
+  "tp": "lit"
+ },
+ {
+  "id": "klu7TNy-7qw",
+  "t": "Poetry explained (Inside Out & Back Again by Thanhhà Lại): Crash Course Kids Literature #5",
+  "ch": "Crash Course Kids",
+  "cat": "reading",
+  "tp": "poetry"
+ },
+ {
+  "id": "PkWU-lMdnJg",
+  "t": "How to compare and contrast (Little Red Riding Hood): Crash Course Kids Literature #6",
+  "ch": "Crash Course Kids",
+  "cat": "reading",
+  "tp": "lit"
+ },
+ {
+  "id": "Hocfvp5QItE",
+  "t": "Alphabet Zoo | UFLI Version | Jack Hartmann",
+  "ch": "Jack Hartmann",
+  "cat": "reading",
+  "tp": "phonics"
+ },
+ {
+  "id": "UQi-eTGICTk",
+  "t": "The Worker Bees' ABCs! | Jack Hartmann",
+  "ch": "Jack Hartmann",
+  "cat": "reading",
+  "tp": "phonics"
+ },
+ {
+  "id": "L0Cb6Vg6YUE",
+  "t": "Come Together! | Jack Hartmann ft. @MCGrammarTV",
+  "ch": "Jack Hartmann",
+  "cat": "reading",
+  "tp": "grammar"
+ },
+ {
+  "id": "TaqsdQADC6s",
+  "t": "Exploring Our Solar System - A FreeSchool Reader Read-Aloud Book For Kids (Solar System Book 1)",
+  "ch": "Free School",
+  "cat": "reading",
+  "tp": "space"
+ },
+ {
+  "id": "K7Oq9_DU1Mc",
+  "t": "All About Volcanoes: How They Form, Eruptions & More!",
+  "ch": "SciShow Kids",
+  "cat": "science",
+  "tp": "volcano"
+ },
+ {
+  "id": "0jKoOUZ1GBM",
+  "t": "Every Kind of Volcano | SciShow Kids",
+  "ch": "SciShow Kids",
+  "cat": "science",
+  "tp": "volcano"
+ },
+ {
+  "id": "8qdYCpSW2eY",
+  "t": "The Biggest Volcano Ever is in Space! | SciShow Kids",
+  "ch": "SciShow Kids",
+  "cat": "science",
+  "tp": "space"
+ },
+ {
+  "id": "l64YwNl1wr0",
+  "t": "Earth's Rotation & Revolution: Crash Course Kids 8.1",
+  "ch": "Crash Course Kids",
+  "cat": "science",
+  "tp": "space"
+ },
+ {
+  "id": "EwY6p-r_hyU",
+  "t": "Gravity Compilation: Crash Course Kids",
+  "ch": "Crash Course Kids",
+  "cat": "science",
+  "tp": "gravity"
+ },
+ {
+  "id": "ELchwUIlWa8",
+  "t": "What's Matter? - Crash Course Kids #3.1",
+  "ch": "Crash Course Kids",
+  "cat": "science",
+  "tp": "matter"
+ },
+ {
+  "id": "fxJWin195kU",
+  "t": "The Engineering Process: Crash Course Kids #12.2",
+  "ch": "Crash Course Kids",
+  "cat": "science",
+  "tp": "engineering"
+ },
+ {
+  "id": "MuKs9o1s8h8",
+  "t": "Fabulous Food Chains: Crash Course Kids #7.1",
+  "ch": "Crash Course Kids",
+  "cat": "science",
+  "tp": "animals"
+ },
+ {
+  "id": "C4rdqXXzPGU",
+  "t": "Your Tongue: The Taste-Maker!",
+  "ch": "SciShow Kids",
+  "cat": "science",
+  "tp": "body"
+ },
+ {
+  "id": "vKxpbmdPSyk",
+  "t": "Senses You Didn’t Know You Have | SciShow Kids",
+  "ch": "SciShow Kids",
+  "cat": "science",
+  "tp": "body"
+ },
+ {
+  "id": "6WNHyAXIN8c",
+  "t": "How Ears Let Us Hear the World! | SciShow Kids",
+  "ch": "SciShow Kids",
+  "cat": "science",
+  "tp": "body"
+ },
+ {
+  "id": "cLEdznnTT8s",
+  "t": "How Do Cuts Heal?",
+  "ch": "SciShow Kids",
+  "cat": "science",
+  "tp": "body"
+ },
+ {
+  "id": "fQaOrxS5iNc",
+  "t": "How Do Snakes Smell With Their Tongues? | Amazing Animal Senses! | SciShow Kids",
+  "ch": "SciShow Kids",
+  "cat": "science",
+  "tp": "body"
+ },
+ {
+  "id": "oVOnRPefcno",
+  "t": "What Makes Bridges So Strong? | Engineering for Kids | STEAM | SciShow Kids",
+  "ch": "SciShow Kids",
+  "cat": "science",
+  "tp": "engineering"
+ },
+ {
+  "id": "YBGPMztHR4Y",
+  "t": "Octopus Showdown 🐙 | Whoa Factor | Nat Geo Kids",
+  "ch": "National Geographic Kids",
+  "cat": "science",
+  "tp": "animals"
+ },
+ {
+  "id": "9hADH1YQn08",
+  "t": "Teaching Baby Meerkats at Survival School! 🎒 Animal Card Quest | Nat Geo Kids",
+  "ch": "National Geographic Kids",
+  "cat": "science",
+  "tp": "animals"
+ },
+ {
+  "id": "JvSClZ3vHOI",
+  "t": "Swings, Slides, and Science | Physics for Kids",
+  "ch": "SciShow Kids",
+  "cat": "science",
+  "tp": "engineering"
+ },
+ {
+  "id": "ilQIiwbDnfI",
+  "t": "Computers Are Awesome! | Computer Literacy for Kids | Jack Hartmann",
+  "ch": "Jack Hartmann",
+  "cat": "science",
+  "tp": "engineering"
+ },
+ {
+  "id": "dN0rdptUfas",
+  "t": "How Do Leaves Change Color in Fall?",
+  "ch": "Homeschool Pop",
+  "cat": "science",
+  "tp": "earth"
+ },
+ {
+  "id": "nXshD8Bz7Ac",
+  "t": "How Do Pine Cones Help Grow New Trees?",
+  "ch": "Homeschool Pop",
+  "cat": "science",
+  "tp": "earth"
+ },
+ {
+  "id": "HIABLFc7EXA",
+  "t": "What Is an Acorn's Cap Called?",
+  "ch": "Homeschool Pop",
+  "cat": "science",
+  "tp": "earth"
+ },
+ {
+  "id": "2eCa8nBRxQU",
+  "t": "Fall for Kids | Learn about Autumn!",
+  "ch": "Homeschool Pop",
+  "cat": "science",
+  "tp": "earth"
+ },
+ {
+  "id": "PI9tlYxluX0",
+  "t": "Cactus Facts for Kids | Learn About Cacti",
+  "ch": "Homeschool Pop",
+  "cat": "science",
+  "tp": "animals"
+ },
+ {
+  "id": "LE8agcLlma8",
+  "t": "What is Snow for Children: How Do Snowflakes Form and Why Does it Snow for Kids - FreeSchool",
+  "ch": "Free School",
+  "cat": "science",
+  "tp": "earth"
+ },
+ {
+  "id": "PmFP4K8-3NA",
+  "t": "10 Interesting Facts About Polar Bears for Children: Learn About Polar Bears for Kids - FreeSchool",
+  "ch": "Free School",
+  "cat": "science",
+  "tp": "animals"
+ },
+ {
+  "id": "K-34rankRkw",
+  "t": "10 Interesting Facts About Penguins for Children: Learn About Penguins for Kids - FreeSchool",
+  "ch": "Free School",
+  "cat": "science",
+  "tp": "animals"
+ },
+ {
+  "id": "jZlral-M38w",
+  "t": "All About Sea Lions for Kids: Sea Lion Facts and Information for Children - FreeSchool",
+  "ch": "Free School",
+  "cat": "science",
+  "tp": "animals"
+ },
+ {
+  "id": "ul0O3qYXSRQ",
+  "t": "All About Reindeer or Caribou for Kids: Reindeer Facts and Information for Children - FreeSchool",
+  "ch": "Free School",
+  "cat": "science",
+  "tp": "animals"
+ },
+ {
+  "id": "Fu_8KkQagAk",
+  "t": "5 Characteristics of Living Organisms: Qualities of Living Things for Kids - FreeSchool",
+  "ch": "Free School",
+  "cat": "science",
+  "tp": "animals"
+ },
+ {
+  "id": "3gEmSa0esDs",
+  "t": "Kansas for Kids | US States Learning Video",
+  "ch": "Homeschool Pop",
+  "cat": "geography",
+  "tp": "states"
+ },
+ {
+  "id": "jsTB7gSfDPI",
+  "t": "Constitution for Kids | What It Is and Why It Matters",
+  "ch": "Homeschool Pop",
+  "cat": "geography",
+  "tp": "history"
+ },
+ {
+  "id": "x7k7CeWDtWs",
+  "t": "Know Your Globe",
+  "ch": "SciShow Kids",
+  "cat": "geography",
+  "tp": "world"
+ },
+ {
+  "id": "kKqd0_cydZM",
+  "t": "Iceland: A Land of Ice AND Fire! | SciShow Kids",
+  "ch": "SciShow Kids",
+  "cat": "geography",
+  "tp": "world"
+ },
+ {
+  "id": "HhXnRfyUbeQ",
+  "t": "The Fiordlands of New Zealand! | SciShow Kids",
+  "ch": "SciShow Kids",
+  "cat": "geography",
+  "tp": "world"
+ },
+ {
+  "id": "0U4lOGo593k",
+  "t": "Yellowstone: The World’s First National Park! | SciShow Kids",
+  "ch": "SciShow Kids",
+  "cat": "geography",
+  "tp": "states"
+ },
+ {
+  "id": "YR4wtGWK7eE",
+  "t": "Hawai’i: Land of Volcanoes | SciShow Kids",
+  "ch": "SciShow Kids",
+  "cat": "geography",
+  "tp": "states"
+ },
+ {
+  "id": "sm7O4R1uN9s",
+  "t": "All About the Mayflower for Children: Learn  Facts About the Mayflower for Kids - FreeSchool",
+  "ch": "Free School",
+  "cat": "geography",
+  "tp": "history"
+ },
+ {
+  "id": "TCCP4MCy0Ck",
+  "t": "The Louisiana Purchase for Kids: Facts About the Louisiana Purchase for Children - FreeSchool",
+  "ch": "Free School",
+  "cat": "geography",
+  "tp": "history"
+ },
+ {
+  "id": "zta2y7cAMDk",
+  "t": "Exploring the Grand Canyon for Children: Learn How the Grand Canyon was Formed for Kids - FreeSchool",
+  "ch": "Free School",
+  "cat": "geography",
+  "tp": "states"
+ },
+ {
+  "id": "qmd6Izx2ZkA",
+  "t": "Egyptian Hieroglyphs and the Rosetta Stone: the Discovery of the Rosetta Stone for Kids - FreeSchool",
+  "ch": "Free School",
+  "cat": "geography",
+  "tp": "history"
+ },
+ {
+  "id": "kCk92M0HMqU",
+  "t": "The Beautiful Garden of Eden | Superbook - In The Beginning English Clip",
+  "ch": "Superbook",
+  "cat": "bible",
+  "tp": "creation"
+ },
+ {
+  "id": "x19UYUaJ0rs",
+  "t": "The Story of Creation | Superbook - In The Beginning English Clip",
+  "ch": "Superbook",
+  "cat": "bible",
+  "tp": "creation"
+ },
+ {
+  "id": "mc0JmNUcqWI",
+  "t": "Focus On What God Has Told You to Do | Superbook - Nehemiah English Clip",
+  "ch": "Superbook",
+  "cat": "bible",
+  "tp": "nehemiah"
+ },
+ {
+  "id": "26vi-UsyYFk",
+  "t": "Nicodemus Met Jesus | Superbook - Nicodemus English Clip",
+  "ch": "Superbook",
+  "cat": "bible",
+  "tp": "jesus"
+ },
+ {
+  "id": "3pH5GIr83XQ",
+  "t": "God Was With Daniel Inside the Lion’s Den | Superbook - Roar English Clip",
+  "ch": "Superbook",
+  "cat": "bible",
+  "tp": "daniel"
+ },
+ {
+  "id": "bhqHo6DoGxE",
+  "t": "Daniel Was Thrown Into the Lion’s Den | Superbook Classic - The Lion's Den English Clip",
+  "ch": "Superbook",
+  "cat": "bible",
+  "tp": "daniel"
+ },
+ {
+  "id": "PrjGvyweh8w",
+  "t": "How To Draw Marshall From PAW Patrol: The Dino Movie",
+  "ch": "Art for Kids Hub",
+  "cat": "art",
+  "tp": "draw"
+ },
+ {
+  "id": "h5E8VTzsVhw",
+  "t": "King Saul Got Jealous of David | Superbook - David and Saul English Clip",
+  "ch": "Superbook",
+  "cat": "bible",
+  "tp": "david"
+ },
+ {
+  "id": "7nCutwbZ4nw",
+  "t": "Thomas Finally Saw Jesus! | Superbook - Doubting Thomas English Clip",
+  "ch": "Superbook",
+  "cat": "bible",
+  "tp": "jesus"
+ },
+ {
+  "id": "PrpgO5oaHm0",
+  "t": "Daniel Never Stopped Praying to God | Superbook - Roar English Clip",
+  "ch": "Superbook",
+  "cat": "bible",
+  "tp": "daniel"
+ },
+ {
+  "id": "_bBR6x4NYCM",
+  "t": "We Have a Promise-keeping God! | Superbook - Noah and the Ark English Clip",
+  "ch": "Superbook",
+  "cat": "bible",
+  "tp": "noah"
+ },
+ {
+  "id": "YHh6UmE2Uus",
+  "t": "Jeremiah Remained Hopeful in God | Superbook - Jeremiah English Clip",
+  "ch": "Superbook",
+  "cat": "bible",
+  "tp": "jeremiah"
+ },
+ {
+  "id": "ZXboxmZkpNg",
+  "t": "Esau Forgives Jacob | Superbook - Jacob and Esau English Clip",
+  "ch": "Superbook",
+  "cat": "bible",
+  "tp": "jacob"
+ }
+];
 const MSGS=["Your brain grows stronger every time you try something hard. I'm so proud of you!", "Mistakes are proof that you are learning. Keep going, sweet girl!", "You are curious, clever and kind — the best combination there is.", "Ask big questions today. The world is full of wonderful answers.", "Being kind is always a smart choice. Share a smile with someone today.", "God made you on purpose, with a purpose. Shine bright today!", "You don't have to know it yet. You just have to keep trying.", "Courage is doing something even when you feel a little nervous. You are brave!", "I love the way your mind works. Go discover something amazing!", "Every expert was once a beginner. Today you get to begin something new.", "Your hard work is planting seeds that will grow into big dreams.", "Be the kind of friend you would love to have.", "When something feels tricky, take a deep breath and try a new way.", "You are loved more than all the stars in the sky.", "Reading opens doors to a thousand worlds. Which one will you visit today?", "\"I can do all things through Christ who strengthens me.\" You've got this!", "The word \"yet\" is magic: \"I can't do it… yet!\"", "You light up every room you walk into. Let's learn something fun!", "Great thinkers ask \"Why?\" and \"How?\" Keep wondering, my scientist!", "Being patient with yourself is a superpower.", "Your questions make the world more interesting. Never stop asking.", "Today is a brand-new page. Write something wonderful on it!", "Strong girls lift others up. Encourage someone today.", "God's love for you never runs out — not even a little bit.", "Practice doesn't make perfect, it makes progress. And progress is awesome!", "You are smart, but your kindness is what makes you shine the most.", "If at first you don't succeed, try, try again. I believe in you!", "Every problem is a puzzle waiting for your clever brain.", "Be brave enough to raise your hand and share your ideas.", "Thank you for being you. I'm so lucky to be your mom.", "Little by little, a little becomes a lot. Keep learning!", "Look for something beautiful today and tell me about it later.", "Your imagination can build anything. Dream big!", "Gratitude makes a happy heart. What are three things you're thankful for?", "Mistakes help your brain grow new connections. Go make some!", "\"Be strong and courageous… for the Lord your God is with you wherever you go.\"", "Explorers don't give up when the path gets steep. Neither do you!", "You can do hard things. You've done them before!", "A kind word can change someone's whole day. Spread some kindness.", "Learning is an adventure, and you are the explorer!", "The more you read, the more you'll know. The more you know, the further you'll go.", "I'm proud of you for trying, not just for getting it right.", "Curiosity is the spark that lights up great ideas. Stay curious!", "Your heart is full of goodness. Let it show today.", "Even small steps move you forward. Take one today!", "Be honest, be kind, be brave, be you.", "Wonder about the stars, the oceans and the tiny bugs. Everything is amazing!", "\"Let your light shine before others.\" You have such a bright light!", "Focus, breathe, believe. You've got this, Amelia!", "Hard work today means new superpowers tomorrow.", "When you help others, you grow too.", "Your ideas matter. Your voice matters. You matter.", "Try something new today, even if it feels a little scary.", "Be a problem solver. The world needs your clever ideas!", "God gave you a wonderful mind. Let's use it to discover something new!", "You are a bright, beautiful, brilliant girl. Never forget it.", "Happy learning! Remember to have fun while you grow.", "The best way to learn is to be curious and never stop asking questions.", "Every day you become a little wiser. Keep shining!", "I love you to the moon and back. Go show the world what you can do!"];
 const K='amelia_ld_v1_';
 const S={get(k,d){try{const v=localStorage.getItem(K+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){localStorage.setItem(K+k,JSON.stringify(v))}};
